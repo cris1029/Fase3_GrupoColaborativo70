@@ -4,14 +4,14 @@
 var api=null;var apiHandle = null;var apiAttempts = 0; var apiStatus = "";var apiInput=0; function loadPage(){cssColors(); startTime = new Date().getTime();api = getAPIHandle();
 if (api == null){}else{api.LMSInitialize(""); apiStatus=api.LMSGetValue("cmi.core.lesson_status");if ((apiStatus!="failed") && (apiStatus!="passed")){
 api.LMSSetValue("cmi.core.lesson_status", "failed");}else{if ((scoOk==0) && (scoWrong==0)){api.LMSSetValue("cmi.core.lesson_status", "failed");}
-else{if (apiStatus=="passed"){if (scoOk==0){api.LMSSetValue("cmi.core.lesson_status", "failed");}
+else{if (apiStatus=="passed"){if (scoOk==0){api.LMSSetValue("cmi.core.lesson_status", "failed");}else{
 if (tiButtonTime){
-clearInterval(interval);$("#ardoraActCanvas").unbind("mousedown");var canvas = document.getElementById("ardoraActCanvas");canvas.width = canvas.width;
+$("#ardoraActCanvas").unbind("mousedown");var canvas = document.getElementById("ardoraActCanvas");canvas.width = canvas.width;
 }
-else{showMessage("Ok");apiInput=1;}}
+showMessage("Ok");apiInput=1;}}
 if (apiStatus=="failed"){if (scoWrong==0){api.LMSSetValue("cmi.core.lesson_status", "failed");}else{
 if (tiButtonTime){
-clearInterval(interval);$("#ardoraActCanvas").unbind("mousedown");var canvas = document.getElementById("ardoraActCanvas");canvas.width = canvas.width;
+$("#ardoraActCanvas").unbind("mousedown");var canvas = document.getElementById("ardoraActCanvas");canvas.width = canvas.width;
 }
 showMessage("scoMessage");apiInput=1;}}}}
 var aluName = api.LMSGetValue("cmi.core.student_name");document.getElementById("ardoraAlumSCORM").innerHTML="<p>"+aluName+"</p>";
